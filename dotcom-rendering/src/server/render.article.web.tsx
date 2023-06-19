@@ -25,6 +25,7 @@ import type { FEElement } from '../types/content';
 import type { FEArticleType } from '../types/frontend';
 import type { TagType } from '../types/tag';
 import { htmlPageTemplate } from './htmlPageTemplate';
+import { eventsSchema } from './temporaryEventsStructuredData';
 import { recipeSchema } from './temporaryRecipeStructuredData';
 
 interface Props {
@@ -217,6 +218,9 @@ window.twttr = (function(d, s, id) {
 	const recipeMarkup =
 		webURL in recipeSchema ? recipeSchema[webURL] : undefined;
 
+	const eventsMarkup =
+		webURL in eventsSchema ? eventsSchema[webURL] : undefined;
+
 	return htmlPageTemplate({
 		linkedData,
 		scriptTags,
@@ -234,6 +238,7 @@ window.twttr = (function(d, s, id) {
 				? initTwitter
 				: undefined,
 		recipeMarkup,
+		eventsMarkup,
 		offerHttp3,
 		canonicalUrl,
 		renderingTarget: 'Web',

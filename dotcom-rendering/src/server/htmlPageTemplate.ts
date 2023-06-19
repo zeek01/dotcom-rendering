@@ -22,6 +22,7 @@ type BaseProps = {
 	twitterData?: { [key: string]: string };
 	initTwitter?: string;
 	recipeMarkup?: string;
+	eventsMarkup?: string;
 	canonicalUrl?: string;
 	borkFCP: boolean;
 	borkFID: boolean;
@@ -68,6 +69,7 @@ export const htmlPageTemplate = (props: WebProps | AppProps): string => {
 		twitterData,
 		initTwitter,
 		recipeMarkup,
+		eventsMarkup,
 		canonicalUrl,
 		renderingTarget,
 		offerHttp3,
@@ -420,6 +422,11 @@ https://workforus.theguardian.com/careers/product-engineering/
 				${
 					recipeMarkup !== undefined
 						? `<script type="application/ld+json">${recipeMarkup}</script>`
+						: '<!-- no recipe markup -->'
+				}
+				${
+					eventsMarkup !== undefined
+						? `<script type="application/ld+json">${eventsMarkup}</script>`
 						: '<!-- no recipe markup -->'
 				}
             </body>
